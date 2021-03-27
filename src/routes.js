@@ -10,7 +10,7 @@ export default function Routes () {
   return(
     <NavigationContainer>
       <Navigator>
-        <Screen  component={Login} /> 
+        <Screen name='Login'  component={Login} /> 
       </Navigator>
     </NavigationContainer>
   ) 
