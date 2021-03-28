@@ -14,7 +14,6 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <Text>olaa</Text>
       <Image style={{ width: 200, height: 200, borderRadius: 50 }}
       source={{ uri: picture, }}/>
       

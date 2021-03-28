@@ -25,7 +25,7 @@ export default function Login() {
         permissions,
         declinedPermissions,
       } =  await Facebook.logInWithReadPermissionsAsync({
-        permissions: ['public_profile']
+        permissions: ['public_profile', 'email']
       });
       if (type === 'success') {
         // Get the user's name using Facebook's Graph API
