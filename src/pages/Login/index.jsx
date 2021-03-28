@@ -77,7 +77,7 @@ export default function LoginFacebook() {
 
   async function loginApi(data, body) {
     api.post('/session', {username : data.name, email: data.email}).then(({data}) => {
-      navigate('Home',{data, body});
+      navigate('Home',{user: data ,  image:body.picture.data.url});
     }).catch((err) => alert(err))
   }
 
