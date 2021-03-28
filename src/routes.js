@@ -126,9 +126,11 @@ export default function Routes () {
   return(
     <NavigationContainer>
     <Navigator  screenOptions={{headerShown:false}}>
-    <Screen name='Home'  component={TabScreens} /> 
 
+    <Screen name='Home'  component={TabScreens} /> 
     <Screen name='Login'  component={Login} /> 
+
+
     </Navigator>
    
     </NavigationContainer>

@@ -4,9 +4,15 @@ import {AuthContext} from '../../context/AuthContext'
 
 import { Container,NameView,NameText,Span } from './styles';
 
-const DetailReward = () => {
-  const {user} = useContext(AuthContext)
-  console.log(user)
+const DetailReward =  () => {
+  const {user, login, img} = useContext(AuthContext)
+  // login( 'john-lenon2011@gmail.com','john').then(()=> {
+  // const {user} = useContext(AuthContext)
+     
+  //   console.log(user)})
+
+    console.log(user)
+ 
   return <Container >
     <StatusBar />
     <NameView>
