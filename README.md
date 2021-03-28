@@ -25,5 +25,9 @@ yarn
 yarn start
 ```
 
+## Login com usuário de teste do facebook
+email: john_rfdwnso_almicar@tfbnw.net
+senha: cR5t5PTaLP*N
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
