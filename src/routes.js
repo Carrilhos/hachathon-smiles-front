@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native'
-import {createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View } from 'react-native'
 import {
@@ -14,13 +14,11 @@ import Home from './pages/Home'
 import DetailReward from './pages/DetailReward'
 const TabNav = createBottomTabNavigator()
 
-export default function Routes () {
-  const {Navigator, Screen} = createStackNavigator();
+export default function Routes() {
+  const { Navigator, Screen } = createStackNavigator();
 
-
-
-  const  TabScreens = () => (
-    <TabNav.Navigator  screenOptions={({ route }) => ({
+  const TabScreens = () => (
+    <TabNav.Navigator screenOptions={({ route }) => ({
       tabBarIcon: ({ color, size, focused }) => {
         switch (route.name) {
           case 'Recompensas':
@@ -42,7 +40,7 @@ export default function Routes () {
                   name='star'
                   size={size}
                   color={focused ? '#FF7020' : color}
-                  // style={{ paddingTop: 10 }}
+                // style={{ paddingTop: 10 }}
                 />
               </>
             )
@@ -96,44 +94,40 @@ export default function Routes () {
         }
       },
     })}
-    tabBarOptions={{
-      activeTintColor: '#707070',
-      inactiveTintColor: '#C1C1C1',
+      tabBarOptions={{
+        activeTintColor: '#707070',
+        inactiveTintColor: '#C1C1C1',
 
-      tabStyle: {
-        justifyContent: 'center',
-      },
+        tabStyle: {
+          justifyContent: 'center',
+        },
 
-      labelStyle: {
-        fontSize: 14,
-        fontStyle: 'italic',
-        fontWeight: 'bold',
-        marginBottom: 10,
-        marginTop: -10,
-      },
-      style: {
-        height: 71,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-      },
-    }}>
+        labelStyle: {
+          fontSize: 14,
+          fontStyle: 'italic',
+          fontWeight: 'bold',
+          marginBottom: 10,
+          marginTop: -10,
+        },
+        style: {
+          height: 71,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+        },
+      }}>
       <TabNav.Screen name='Desafios' component={Home} />
       <TabNav.Screen name='Recompensas' component={DetailReward} />
       <TabNav.Screen name='Perfil' component={Home} />
     </TabNav.Navigator>
   )
 
-  return(
+  return (
     <NavigationContainer>
-    <Navigator  screenOptions={{headerShown:false}}>
-
-    <Screen name='Home'  component={TabScreens} /> 
-    <Screen name='Login'  component={Login} /> 
-
-
-    </Navigator>
-   
+      <Navigator screenOptions={{ headerShown: false }}>
+        <Screen name='Login' component={Login} />
+        <Screen name='Home' component={Home} />
+      </Navigator>
     </NavigationContainer>
-    
-  ) 
+
+  )
 }
