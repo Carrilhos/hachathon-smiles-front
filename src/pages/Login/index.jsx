@@ -1,40 +1,42 @@
 import { StatusBar } from 'expo-status-bar';
-import expo from 'expo'
 import React, { useState} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Image , Button } from 'react-native';
 import * as Facebook from 'expo-facebook'
+import { useNavigation } from '@react-navigation/native';
 
-export default function App() {
+export default function Login() {
   const [isLoggedin, setLoggedinStatus] = useState(false);
   const [userData, setUserData] = useState(null);
+  const {navigate} = useNavigation();
 
-  async function getUserAsync() {
-    const { name } = await requestAsync('me');
-    alert(`Hello ${name} 👋`);
-  }
+  // async function getUserAsync() {
+  //   const res = await requestAsync('me');
+  //   setUserData(res)
+  //   alert(`Hello ${res.name} 👋`);
+  // }
 
-  async function requestAsync(path, token) {
-    let resolvedToken = token;
-    if (!token) {
-      const auth = await Facebook.getAuthenticationCredentialAsync();
-      if (!auth) {
-        throw new Error(
-          'User is not authenticated. Ensure `logInWithReadPermissionsAsync` has successfully resolved before attempting to use the FBSDK Graph API.'
-        );
-      }
-      resolvedToken = auth.token;
-    }
-    const response = await fetch(
-      `https://graph.facebook.com/${path}?access_token=${encodeURIComponent(resolvedToken)}`
-    );
-    const body = await response.json();
-    return body;
-  }
+  // async function requestAsync(path, token) {
+  //   let resolvedToken = token;
+  //   if (!token) {
+  //     const auth = await Facebook.getAuthenticationCredentialAsync();
+  //     if (!auth) {
+  //       throw new Error(
+  //         'User is not authenticated. Ensure `logInWithReadPermissionsAsync` has successfully resolved before attempting to use the FBSDK Graph API.'
+  //       );
+  //     }
+  //     resolvedToken = auth.token;
+  //   }
+  //   const response = await fetch(
+  //     `https://graph.facebook.com/${path}?access_token=${encodeURIComponent(resolvedToken)}`
+  //   );
+  //   const body = await response.json();
+  //   return body;
+  // }
 
   async function logIn() {
     try {
       await Facebook.initializeAsync({
-        appId: '426357505128962',
+        appId: '1131379430621714',
       });
       
       const {
@@ -50,10 +52,8 @@ export default function App() {
         // Get the user's name using Facebook's Graph API
         fetch(`https://graph.facebook.com/me?access_token=${token}`)
           .then(response => {
-            getUserAsync();
+            navigate('Home', {token});
             setLoggedinStatus(true);
-            alert(response.data);
-            setUserData(response.data);
           })
           
           .catch(e => console.log(e))
@@ -72,8 +72,15 @@ export default function App() {
       onPress={logIn}
       title='LogIn'/>
       <StatusBar style="auto" />
-
+      {/* {isLoggedin && (
+      <View>
+        <Image style={{ width: 200, height: 200, borderRadius: 50 }}
+      source={{ uri: userData.picture.data.url }}/>
+    <Text style={{ fontSize: 22, marginVertical: 10 }}>Hi {userData.name}!</Text>
+      </View>
+    )} */}
     </View>
+    
     
     
   );
