@@ -11,6 +11,7 @@ import {
 
 import Login from './pages/Login'
 import Home from './pages/Home'
+import DetailReward from './pages/DetailReward'
 const TabNav = createBottomTabNavigator()
 
 export default function Routes () {
@@ -117,17 +118,21 @@ export default function Routes () {
       },
     }}>
       <TabNav.Screen name='Desafios' component={Home} />
-      <TabNav.Screen name='Recompensas' component={Home} />
+      <TabNav.Screen name='Recompensas' component={DetailReward} />
       <TabNav.Screen name='Perfil' component={Home} />
     </TabNav.Navigator>
   )
 
   return(
     <NavigationContainer>
-      <Navigator screenOptions={{ headerShown: false}}>
-        <Screen name='Login'  component={Login} /> 
-        <Screen name='Home'  component={Home} /> 
-      </Navigator>
+    <Navigator  screenOptions={{headerShown:false}}>
+
+    <Screen name='Home'  component={TabScreens} /> 
+    <Screen name='Login'  component={Login} /> 
+
+
+    </Navigator>
+   
     </NavigationContainer>
     
   ) 
