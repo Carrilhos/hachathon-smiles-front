@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 
+
 export const ViewContainer = styled(View)`
     display: flex;
     flex: 1;
